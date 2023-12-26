@@ -7,13 +7,15 @@ function Title({ title }) {
 
 const styles = StyleSheet.create({
   title: {
+    fontFamily: "open-sans-bold",
     fontSize: 26,
-    fontWeight: "bold",
     color: COLORS.white,
     textAlign: "center",
     borderWidth: 2,
     borderColor: COLORS.white,
     padding: 8,
+    maxWidth: "90%",
+    width: 300,
   },
 });
 

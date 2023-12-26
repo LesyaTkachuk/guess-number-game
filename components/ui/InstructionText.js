@@ -8,6 +8,7 @@ function InstructionText({ text }) {
 const styles = StyleSheet.create({
   text: {
     fontSize: 22,
+    fontFamily: "open-sans",
     color: COLORS.accent500,
     textAlign: "center",
   },
