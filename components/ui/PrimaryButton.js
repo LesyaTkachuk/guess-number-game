@@ -25,14 +25,16 @@ const styles = StyleSheet.create({
   buttonOuterContainer: {
     // flex: 1,
     width: "50%",
+    minHeight: 50,
     margin: 4,
     borderRadius: 28,
     overflow: "hidden",
   },
   buttonInnerContainer: {
     backgroundColor: COLORS.primary500,
+    flex: 1,
+    justifyContent: "center",
     alignItems: "center",
-    // justifyContent: "center",
     paddingHorizontal: 16,
     paddingVertical: 8,
     elevation: 2,

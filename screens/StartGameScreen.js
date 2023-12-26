@@ -1,5 +1,14 @@
 import { useState } from "react";
-import { TextInput, View, StyleSheet, Alert, Text } from "react-native";
+import {
+  TextInput,
+  View,
+  StyleSheet,
+  Alert,
+  Dimensions,
+  useWindowDimensions,
+  KeyboardAvoidingView,
+  ScrollView,
+} from "react-native";
 
 import { COLORS } from "../constants/colors";
 
@@ -34,31 +43,45 @@ function StartGameScreen({ onPickNumber }) {
     setEnteredNumber("");
   }
 
+  const { width, height } = useWindowDimensions();
+  const marginTopNumber = height < 380 ? 30 : 100;
+
   return (
-    <View style={styles.root}>
-      <Title title="Guess a number" />
-      <Card>
-        <InstructionText text="Enter a number" />
-        <TextInput
-          style={styles.numberInput}
-          maxLength={2}
-          keyboardType="number-pad"
-          autoCapitalize="none"
-          autoCorrect={false}
-          value={enteredNumber}
-          onChangeText={numberInputHandler}
-        />
-        <View style={styles.buttonContainer}>
-          <PrimaryButton title="Reset" onPress={resetHandler} />
-          <PrimaryButton title="Confirm" onPress={confirmInputHandler} />
+    <ScrollView style={styles.screen}>
+      <KeyboardAvoidingView style={styles.screen} behavior="position">
+        <View style={[styles.root, { marginTop: marginTopNumber }]}>
+          <Title title="Guess a number" />
+          <Card>
+            <InstructionText text="Enter a number" />
+            <TextInput
+              style={styles.numberInput}
+              maxLength={2}
+              keyboardType="number-pad"
+              autoCapitalize="none"
+              autoCorrect={false}
+              value={enteredNumber}
+              onChangeText={numberInputHandler}
+            />
+            <View style={styles.buttonContainer}>
+              <PrimaryButton title="Reset" onPress={resetHandler} />
+              <PrimaryButton title="Confirm" onPress={confirmInputHandler} />
+            </View>
+          </Card>
         </View>
-      </Card>
-    </View>
+      </KeyboardAvoidingView>
+    </ScrollView>
   );
 }
 
+// const { height: deviceHeight } = Dimensions.get("window");
+
 const styles = StyleSheet.create({
-  root: { flex: 1, alignItems: "center", marginTop: 100 },
+  screen: { flex: 1 },
+  root: {
+    flex: 1,
+    alignItems: "center",
+    // marginTop: deviceHeight < 380 ? 30 : 100,
+  },
   numberInput: {
     height: 50,
     width: 50,

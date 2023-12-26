@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     padding: deviceWidth < 380 ? 12 : 24,
     borderRadius: 8,
     margin: deviceWidth < 380 ? 12 : 24,
-    width: "80%",
+    // width: "50%",
     alignItems: "center",
     justifyContent: "center",
   },
